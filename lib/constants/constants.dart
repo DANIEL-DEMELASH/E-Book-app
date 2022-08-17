@@ -11,6 +11,7 @@ const kLargeTextStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 const kMediumTextStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
 const kLightMediumTextStyle = TextStyle(
     fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent);
+const kExtraLargeTextStyle = TextStyle(fontSize: 34);
 
 const kLightLargeTextStyle =
     TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
