@@ -10,7 +10,7 @@
 .svn/
 web
 windows
-
+.dart_tool
 
 # IntelliJ related
 *.iml

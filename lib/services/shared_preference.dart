@@ -32,4 +32,11 @@ class SharedPreference {
     SharedPreferences prefs = await _prefs;
     return prefs.getBool('isLoggedIn');
   }
+
+  saveUserdata(bool isLoggedIn, String token, bool isAuthor) async {
+    SharedPreference sh = SharedPreference();
+    sh.setLoggedIn(isLoggedIn);
+    sh.setIsAuthor(isAuthor);
+    sh.setToken(token);
+  }
 }
