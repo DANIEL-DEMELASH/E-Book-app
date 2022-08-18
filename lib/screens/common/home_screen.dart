@@ -137,11 +137,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     onTap: () {
                                       Navigator.pushNamed(context, '/sign_up');
                                     },
-                                    child: Text(
-                                      'Buy for ' +
-                                          book.price.toString() +
-                                          ' ETB',
-                                      style: const TextStyle(
+                                    child: const Text(
+                                      // 'Buy for ' +
+                                      //     book.price.toString() +
+                                      //     ' ETB',
+                                      'Buy for 99 ETB',
+                                      style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
                                     ),

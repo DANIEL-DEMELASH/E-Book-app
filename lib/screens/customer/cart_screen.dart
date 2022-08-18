@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'package:http/http.dart' as http;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:localstore/localstore.dart';
 import 'package:project/constants/constants.dart';
 import 'package:project/models/book.dart';
+import 'package:project/services/shared_preference.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -57,10 +59,11 @@ class _CartScreenState extends State<CartScreen> {
                   borderRadius: BorderRadius.circular(10.0),
                   color: Colors.lightBlueAccent,
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
                     'Send a Gift',
-                    style: TextStyle(color: Colors.white),
+                    style: kMediumTextStyle.copyWith(
+                        color: Colors.white, letterSpacing: 1),
                   ),
                 ),
               ),
@@ -72,6 +75,7 @@ class _CartScreenState extends State<CartScreen> {
                 _items.forEach((key, value) {
                   CartScreen.totalPrice += value.price;
                 });
+                sendPaymentStatus();
               },
               child: Container(
                 height: 80.0,
@@ -84,7 +88,8 @@ class _CartScreenState extends State<CartScreen> {
                 child: Center(
                   child: Text(
                     'Buy for me: ${CartScreen.totalPrice} ETB',
-                    style: const TextStyle(color: Colors.white),
+                    style: kMediumTextStyle.copyWith(
+                        color: Colors.white, letterSpacing: 1),
                   ),
                 ),
               ),
@@ -103,12 +108,19 @@ class _CartScreenState extends State<CartScreen> {
                 leading: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: Image(
-                        image: NetworkImage(
-                            kServerAddress + ":5000" + item.coverImage))),
-                title: Text(item.title),
+                      image: NetworkImage(
+                          kServerAddress + ":5000" + item.coverImage),
+                    )),
+                title: Text(
+                  item.title,
+                  style: kLargeTextStyle,
+                ),
                 subtitle: Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Text('price ${item.price} ETB'),
+                  child: Text(
+                    'price ${item.price} ETB',
+                    style: kMediumTextStyle,
+                  ),
                 ),
                 trailing: IconButton(
                   icon: const Icon(Icons.delete),
@@ -131,5 +143,24 @@ class _CartScreenState extends State<CartScreen> {
         },
       ),
     );
+  }
+
+  sendPaymentStatus() async {
+    SharedPreference sharedPreference = SharedPreference();
+    String? id = await sharedPreference.getId();
+    try {
+      var response =
+          await http.post(Uri.parse(kServerAddress + ':5000/pay/order'), body: {
+        "user_id": "12345678",
+        "book_id": "12345678",
+        "email": "dani@gmail.com",
+        "first_name": "dani",
+        "last_name": "boii",
+        "total_price": 320.toString()
+      });
+      print(response.body);
+    } catch (e) {
+      print(e);
+    }
   }
 }

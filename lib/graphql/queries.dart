@@ -124,3 +124,20 @@ categories() => gql('''query {
   }
 }
 ''');
+
+myBooks() => gql('''query {
+  shopping_session {
+    book {
+      cover_photo
+      description
+      file
+      id
+      title
+      edition
+      page_size
+      price
+      sample_file
+    }
+  }
+}
+''');

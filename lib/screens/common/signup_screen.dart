@@ -16,6 +16,7 @@ TextEditingController confirmPassword = TextEditingController();
 
 String token = '';
 bool isAuthor = false;
+String id = '';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -124,9 +125,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
                         token = 'Bearer ' + resultData['signup']['token'];
                         isAuthor = resultData['signup']['isAuthor'];
+                        id = resultData['signup']['id'];
 
                         SharedPreference sh = SharedPreference();
-                        sh.saveUserdata(true, token, isAuthor);
+                        sh.saveUserdata(true, token, isAuthor, id);
 
                         //TODO: change redirect pages
 

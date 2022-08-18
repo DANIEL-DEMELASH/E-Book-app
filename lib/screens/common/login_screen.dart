@@ -13,6 +13,7 @@ TextEditingController password = TextEditingController();
 
 String token = '';
 bool isAuthor = false;
+String id = '';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -77,9 +78,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           password.text = '';
                           token = 'Bearer ' + resultData['login']['token'];
                           isAuthor = resultData['login']['isAuthor'];
+                          id = resultData['login']['id'];
 
                           SharedPreference sh = SharedPreference();
-                          sh.saveUserdata(true, token, isAuthor);
+                          sh.saveUserdata(
+                            true,
+                            token,
+                            isAuthor,
+                            id
+                          );
 
                           if (isAuthor) {
                             Navigator.pushReplacement(

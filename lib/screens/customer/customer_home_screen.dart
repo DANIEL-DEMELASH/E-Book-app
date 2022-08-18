@@ -3,6 +3,7 @@ import 'package:project/constants/constants.dart';
 import 'package:project/screens/customer/browse_books.dart';
 import 'package:project/screens/customer/cart_screen.dart';
 import 'package:project/screens/customer/custom_animated_bottom_nav.dart';
+import 'package:project/screens/customer/customer_profile.dart';
 import 'package:project/services/shared_preference.dart';
 
 TextEditingController searchController = TextEditingController();
@@ -39,7 +40,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
               setState(() {
                 isNight = !isNight;
                 SharedPreference sh = SharedPreference();
-                sh.saveUserdata(false, "", false);
+                sh.saveUserdata(false, "", false, "");
                 Navigator.pushReplacementNamed(context, '/login');
               });
             },
@@ -60,7 +61,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
       const BrowseBooks(),
       const CartScreen(),
       const Scaffold(),
-      const Scaffold()
+      const CustomerProfile()
     ];
     return IndexedStack(
       index: _currentIndex,

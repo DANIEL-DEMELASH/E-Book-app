@@ -74,12 +74,12 @@ Widget bookWidget(context, book) {
             padding: const EdgeInsets.only(top: 8.0),
             child: Text(
               book.title,
-              style: kMediumTextStyle,
+              style: kLargeTextStyle,
             ),
           ),
           Text(
             book.title,
-            style: const TextStyle(color: Colors.grey),
+            style: kMediumTextStyle.copyWith(color: Colors.grey),
           )
         ]),
   );

@@ -39,7 +39,7 @@ class Book {
     return Book(
       id: jsonData['id'],
       title: jsonData['title'],
-      price: jsonData['price'],
+      price: jsonData['price'].toDouble(),
       pageSize: jsonData['page_size'],
       edition: jsonData['edition'],
       coverImage: jsonData['cover_photo'],

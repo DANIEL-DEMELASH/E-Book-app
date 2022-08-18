@@ -13,6 +13,16 @@ class SharedPreference {
     return prefs.getString('token');
   }
 
+  void setId(String id) async {
+    SharedPreferences prefs = await _prefs;
+    prefs.setString('id', id);
+  }
+
+  Future<String?> getId() async {
+    SharedPreferences prefs = await _prefs;
+    return prefs.getString('id');
+  }
+
   void setIsAuthor(bool isAuthor) async {
     SharedPreferences prefs = await _prefs;
     prefs.setBool('isAuthor', isAuthor);
@@ -33,10 +43,11 @@ class SharedPreference {
     return prefs.getBool('isLoggedIn');
   }
 
-  saveUserdata(bool isLoggedIn, String token, bool isAuthor) async {
+  saveUserdata(bool isLoggedIn, String token, bool isAuthor, String id) async {
     SharedPreference sh = SharedPreference();
     sh.setLoggedIn(isLoggedIn);
     sh.setIsAuthor(isAuthor);
     sh.setToken(token);
+    sh.setId(id);
   }
 }

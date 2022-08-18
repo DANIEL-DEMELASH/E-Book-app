@@ -98,7 +98,7 @@ class _BrowseBooksState extends State<BrowseBooks> {
                     .toList();
 
                 return SizedBox(
-                  height: 280,
+                  height: 290,
                   child: RefreshIndicator(
                       onRefresh: () async => refetch!(),
                       child: ListView.builder(

@@ -5,7 +5,7 @@ import 'package:project/screens/author/author_home_screen.dart';
 import 'package:project/screens/customer/customer_home_screen.dart';
 import 'package:project/services/shared_preference.dart';
 
-const String kServerAddress = 'http://192.168.230.33';
+const String kServerAddress = 'http://192.168.89.33';
 Color kThemeColor = Colors.lightBlueAccent;
 const kLargeTextStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 const kMediumTextStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
