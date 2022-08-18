@@ -5,6 +5,7 @@ import 'package:project/constants/constants.dart';
 import 'package:project/models/book.dart';
 import 'package:project/screens/customer/cart_screen.dart';
 import 'package:project/services/file_downloader.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BookDescription extends StatefulWidget {
   final Book book;
@@ -90,6 +91,14 @@ class _BookDescriptionState extends State<BookDescription> {
                   });
                   CartScreen.totalPrice = totalPrice;
                 });
+                Fluttertoast.showToast(
+                    msg: "book added to the cart",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.lightBlueAccent,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
               },
               child: Container(
                 height: 80.0,

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:project/constants/constants.dart';
+import 'package:project/graphql/authorized_client.dart';
 import 'package:project/screens/customer/book_description.dart';
+import 'package:project/screens/customer/search_result_screen.dart';
+import 'package:project/services/shared_preference.dart';
 
-Widget userWidget(user, controller) {
+Widget userWidget(user, controller, context) {
   return Column(children: [
     Container(
       margin: const EdgeInsets.fromLTRB(20.0, 25.0, 0.0, 0.0),
@@ -32,6 +36,19 @@ Widget userWidget(user, controller) {
       child: TextField(
         controller: controller,
         autofocus: false,
+        onEditingComplete: () async {
+          print(controller.text);
+          if (controller.text.length > 0) {
+            SharedPreference sharedPreference = SharedPreference();
+            String? token = await sharedPreference.getToken();
+            Navigator.push(
+                context,
+                (MaterialPageRoute(
+                    builder: (context) => GraphQLProvider(
+                        client: AuthorizedClient.initailizeClient(token!),
+                        child: SearchResult(title: controller.text)))));
+          }
+        },
         decoration: InputDecoration(
           prefixIcon: const Icon(Icons.search),
           suffixIcon: const Icon(Icons.mic),

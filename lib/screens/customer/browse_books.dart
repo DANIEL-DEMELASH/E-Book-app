@@ -45,7 +45,7 @@ class _BrowseBooksState extends State<BrowseBooks> {
                   height: 250,
                   child: RefreshIndicator(
                       onRefresh: () async => refetch!(),
-                      child: userWidget(_data[0], searchController)),
+                      child: userWidget(_data[0], searchController, context)),
                 );
               }),
           Query(

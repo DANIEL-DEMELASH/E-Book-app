@@ -1,12 +1,14 @@
 import 'dart:async';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:localstore/localstore.dart';
 import 'package:project/constants/constants.dart';
+import 'package:project/graphql/queries.dart';
 import 'package:project/models/book.dart';
-import 'package:project/services/shared_preference.dart';
+import 'package:project/models/user.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -69,32 +71,53 @@ class _CartScreenState extends State<CartScreen> {
               ),
             ),
           ),
-          Expanded(
-            child: GestureDetector(
-              onTap: () async {
-                _items.forEach((key, value) {
-                  CartScreen.totalPrice += value.price;
-                });
-                sendPaymentStatus();
-              },
-              child: Container(
-                height: 80.0,
-                margin: const EdgeInsets.only(
-                    right: 25.0, top: 5.0, bottom: 5, left: 10.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.black,
-                ),
-                child: Center(
-                  child: Text(
-                    'Buy for me: ${CartScreen.totalPrice} ETB',
-                    style: kMediumTextStyle.copyWith(
-                        color: Colors.white, letterSpacing: 1),
+          Query(
+              options: QueryOptions(document: users()),
+              builder: (QueryResult result, {Refetch? refetch, fetchMore}) {
+                if (result.hasException) {
+                  return const Center(
+                    child: Text('Error'),
+                  );
+                }
+                if (result.isLoading) {
+                  return const Center(
+                    child: Text('Loading...'),
+                  );
+                }
+
+                List<User> data = (result.data!['users'] as List)
+                    .map((e) => User.fromJson(e))
+                    .toList();
+
+                return Expanded(
+                  child: GestureDetector(
+                    onTap: () async {
+                      double totalPrice = 0;
+                      _items.forEach((key, value) {
+                        totalPrice += value.price;
+                      });
+                      CartScreen.totalPrice = totalPrice;
+                      sendPaymentStatus(data[0]);
+                    },
+                    child: Container(
+                      height: 80.0,
+                      margin: const EdgeInsets.only(
+                          right: 25.0, top: 5.0, bottom: 5, left: 10.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.black,
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Buy for me: ${CartScreen.totalPrice} ETB',
+                          style: kMediumTextStyle.copyWith(
+                              color: Colors.white, letterSpacing: 1),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
-          ),
+                );
+              }),
         ]),
       ),
       body: ListView.builder(
@@ -145,18 +168,24 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 
-  sendPaymentStatus() async {
-    SharedPreference sharedPreference = SharedPreference();
-    String? id = await sharedPreference.getId();
+  sendPaymentStatus(user) async {
+    String bookId = '';
+    _items.forEach((key, value) {
+      if (bookId == '') {
+        bookId = value.id;
+      } else {
+        bookId += '~' + value.id;
+      }
+    });
     try {
       var response =
           await http.post(Uri.parse(kServerAddress + ':5000/pay/order'), body: {
-        "user_id": "12345678",
-        "book_id": "12345678",
-        "email": "dani@gmail.com",
-        "first_name": "dani",
-        "last_name": "boii",
-        "total_price": 320.toString()
+        "user_id": user.id,
+        "book_id": bookId,
+        "email": user.email,
+        "first_name": user.firstName,
+        "last_name": user.lastName,
+        "total_price": CartScreen.totalPrice.toString()
       });
       print(response.body);
     } catch (e) {

@@ -141,3 +141,19 @@ myBooks() => gql('''query {
   }
 }
 ''');
+
+searchByTitle() => gql('''query (\$_ilike: String!){
+  books(where: {title: {_ilike: \$_ilike}}) {
+    title
+    ISBN
+    description
+    cover_photo
+    sample_file
+    rating
+    price
+    page_size
+    id
+    edition
+  }
+}
+''');

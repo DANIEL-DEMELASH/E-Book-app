@@ -4,7 +4,6 @@ import 'package:project/screens/customer/browse_books.dart';
 import 'package:project/screens/customer/cart_screen.dart';
 import 'package:project/screens/customer/custom_animated_bottom_nav.dart';
 import 'package:project/screens/customer/customer_profile.dart';
-import 'package:project/services/shared_preference.dart';
 
 TextEditingController searchController = TextEditingController();
 
@@ -22,36 +21,39 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Builder(
-            builder: (BuildContext context) => IconButton(
-                icon: const Icon(
-                  Icons.menu,
-                  color: Colors.black,
-                ),
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                })),
-        actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                isNight = !isNight;
-                SharedPreference sh = SharedPreference();
-                sh.saveUserdata(false, "", false, "");
-                Navigator.pushReplacementNamed(context, '/login');
-              });
-            },
-            icon: isNight
-                ? const Icon(Icons.sunny)
-                : const Icon(Icons.wb_sunny_outlined),
-            color: Colors.black,
-          ),
-        ],
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // leading: Builder(
+      //     builder: (BuildContext context) => IconButton(
+      //         icon: const Icon(
+      //           Icons.menu,
+      //           color: Colors.black,
+      //         ),
+      //         onPressed: () {
+      //           Scaffold.of(context).openDrawer();
+      //         })),
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {
+      //         setState(() {
+      //           isNight = !isNight;
+      //           SharedPreference sh = SharedPreference();
+      //           sh.saveUserdata(false, "", false, "");
+      //           Navigator.pushReplacementNamed(context, '/login');
+      //         });
+      //       },
+      //       icon: isNight
+      //           ? const Icon(Icons.sunny)
+      //           : const Icon(Icons.wb_sunny_outlined),
+      //       color: Colors.black,
+      //     ),
+      //   ],
+      // ),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 30.0),
+        child: getBody(),
       ),
-      body: getBody(),
       bottomNavigationBar: _buildBottomBar(),
     );
   }
