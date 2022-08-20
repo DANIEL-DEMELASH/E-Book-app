@@ -4,6 +4,7 @@ import 'package:project/screens/customer/browse_books.dart';
 import 'package:project/screens/customer/cart_screen.dart';
 import 'package:project/screens/customer/custom_animated_bottom_nav.dart';
 import 'package:project/screens/customer/customer_profile.dart';
+import 'package:project/screens/customer/my_library.dart';
 
 TextEditingController searchController = TextEditingController();
 
@@ -62,7 +63,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
     List<Widget> pages = [
       const BrowseBooks(),
       const CartScreen(),
-      const Scaffold(),
+      const MyLibrary(),
       const CustomerProfile()
     ];
     return IndexedStack(

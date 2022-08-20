@@ -94,10 +94,10 @@ Widget bookWidget(context, book) {
               style: kLargeTextStyle,
             ),
           ),
-          Text(
-            book.title,
-            style: kMediumTextStyle.copyWith(color: Colors.grey),
-          )
+          // Text(
+          //   book.title,
+          //   style: kMediumTextStyle.copyWith(color: Colors.grey),
+          // )
         ]),
   );
 }

@@ -32,8 +32,8 @@ class _HomeScreenState extends State<HomeScreen> {
             document: randomBook(), fetchPolicy: FetchPolicy.cacheAndNetwork),
         builder: (QueryResult result, {Refetch? refetch, fetchMore}) {
           if (result.hasException) {
-            return Center(
-              child: Text(result.toString()),
+            return const Center(
+              child: Text('Error'),
             );
           }
           if (result.isLoading) {
@@ -137,12 +137,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     onTap: () {
                                       Navigator.pushNamed(context, '/sign_up');
                                     },
-                                    child: const Text(
-                                      // 'Buy for ' +
-                                      //     book.price.toString() +
-                                      //     ' ETB',
-                                      'Buy for 99 ETB',
-                                      style: TextStyle(
+                                    child: Text(
+                                      'Buy for ' +
+                                          book.price.toString() +
+                                          ' ETB',
+                                      style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold),
                                     ),

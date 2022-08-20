@@ -96,22 +96,22 @@ class _SignupScreenState extends State<SignupScreen> {
               const SizedBox(
                 height: 25,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Checkbox(
-                      value: isAuthor,
-                      onChanged: (newValue) {
-                        setState(() {
-                          isAuthor = !isAuthor;
-                        });
-                      }),
-                  const Text(
-                    'i am Author',
-                    style: kMediumTextStyle,
-                  )
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     Checkbox(
+              //         value: isAuthor,
+              //         onChanged: (newValue) {
+              //           setState(() {
+              //             isAuthor = !isAuthor;
+              //           });
+              //         }),
+              //     const Text(
+              //       'i am Author',
+              //       style: kMediumTextStyle,
+              //     )
+              //   ],
+              // ),
               Mutation(
                   options: MutationOptions(
                       document: signup(),

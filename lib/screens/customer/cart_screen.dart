@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:http/http.dart' as http;
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:localstore/localstore.dart';
@@ -9,6 +8,7 @@ import 'package:project/constants/constants.dart';
 import 'package:project/graphql/queries.dart';
 import 'package:project/models/book.dart';
 import 'package:project/models/user.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -50,27 +50,6 @@ class _CartScreenState extends State<CartScreen> {
         height: 60.0,
         color: Colors.white,
         child: Row(children: <Widget>[
-          Expanded(
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
-                height: 80.0,
-                margin: const EdgeInsets.only(
-                    left: 25.0, top: 5.0, bottom: 5.0, right: 10.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Colors.lightBlueAccent,
-                ),
-                child: Center(
-                  child: Text(
-                    'Send a Gift',
-                    style: kMediumTextStyle.copyWith(
-                        color: Colors.white, letterSpacing: 1),
-                  ),
-                ),
-              ),
-            ),
-          ),
           Query(
               options: QueryOptions(document: users()),
               builder: (QueryResult result, {Refetch? refetch, fetchMore}) {
@@ -187,9 +166,29 @@ class _CartScreenState extends State<CartScreen> {
         "last_name": user.lastName,
         "total_price": CartScreen.totalPrice.toString()
       });
-      print(response.body);
+      // Uri _url = Uri.parse(response.body);
+      String _url = response.body;
+      _launchInWebViewOrVC(_url);
     } catch (e) {
       print(e);
+    }
+  }
+
+  // _launchURLBrowser(url) async {
+  //   if (await canLaunch(url)) {
+  //     await launch(url);
+  //   } else {
+  //     throw 'Could not launch $url';
+  //   }
+  // }
+  Future<void> _launchInWebViewOrVC(String url) async {
+    if (!await launchUrl(
+      Uri.parse(url),
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(
+          headers: <String, String>{'eyob': 'payment'}),
+    )) {
+      throw 'Could not launch $url';
     }
   }
 }

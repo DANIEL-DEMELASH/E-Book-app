@@ -157,3 +157,20 @@ searchByTitle() => gql('''query (\$_ilike: String!){
   }
 }
 ''');
+
+myLibrary() => gql('''
+  query {
+  shopping_session {
+    book {
+      cover_photo
+      description
+      file
+      id
+      page_size
+      price
+      rating
+      title
+    }
+  }
+}
+''');
