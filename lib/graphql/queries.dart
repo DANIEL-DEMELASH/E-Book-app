@@ -13,6 +13,12 @@ books {
     page_size
     id
     edition
+    user {
+      id
+      email
+      first_name
+      last_name
+    }
     
   }
 }
@@ -112,7 +118,12 @@ books (order_by: {created_at: desc}, limit: 10) {
     page_size
     id
     edition
-    
+    user {
+      id
+      email
+      first_name
+      last_name
+    }
   }
 }
 ''');

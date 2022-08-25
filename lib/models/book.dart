@@ -10,6 +10,7 @@ class Book {
   final String sampleFile;
   final String rating;
   final String description;
+
   Book({
     required this.id,
     required this.sampleFile,

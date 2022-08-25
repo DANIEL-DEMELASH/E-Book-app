@@ -91,17 +91,16 @@ class _SearchResultState extends State<SearchResult> {
                                             .doc()
                                             .id;
                                         final item = Book(
-                                            title: _data[index].title,
-                                            price: _data[index].price,
-                                            pageSize: _data[index].pageSize,
-                                            edition: _data[index].edition,
-                                            coverImage: _data[index].coverImage,
-                                            description:
-                                                _data[index].description,
-                                            id: _data[index].id,
-                                            rating: _data[index].rating,
-                                            sampleFile:
-                                                _data[index].sampleFile);
+                                          title: _data[index].title,
+                                          price: _data[index].price,
+                                          pageSize: _data[index].pageSize,
+                                          edition: _data[index].edition,
+                                          coverImage: _data[index].coverImage,
+                                          description: _data[index].description,
+                                          id: _data[index].id,
+                                          rating: _data[index].rating,
+                                          sampleFile: _data[index].sampleFile,
+                                        );
                                         item.save();
                                         _items.putIfAbsent(item.id, () => item);
                                         double totalPrice = 0;

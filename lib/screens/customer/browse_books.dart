@@ -42,7 +42,7 @@ class _BrowseBooksState extends State<BrowseBooks> {
                     .toList();
 
                 return SizedBox(
-                  height: 250,
+                  height: 270,
                   child: RefreshIndicator(
                       onRefresh: () async => refetch!(),
                       child: userWidget(_data[0], searchController, context)),

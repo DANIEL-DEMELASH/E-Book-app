@@ -74,15 +74,16 @@ class _BookDescriptionState extends State<BookDescription> {
                 setState(() {
                   final id = Localstore.instance.collection('books').doc().id;
                   final item = Book(
-                      title: widget.book.title,
-                      price: widget.book.price,
-                      pageSize: widget.book.pageSize,
-                      edition: widget.book.edition,
-                      coverImage: widget.book.coverImage,
-                      description: widget.book.description,
-                      id: widget.book.id,
-                      rating: widget.book.rating,
-                      sampleFile: widget.book.sampleFile);
+                    title: widget.book.title,
+                    price: widget.book.price,
+                    pageSize: widget.book.pageSize,
+                    edition: widget.book.edition,
+                    coverImage: widget.book.coverImage,
+                    description: widget.book.description,
+                    id: widget.book.id,
+                    rating: widget.book.rating,
+                    sampleFile: widget.book.sampleFile,
+                  );
                   item.save();
                   _items.putIfAbsent(item.id, () => item);
                   double totalPrice = 0;
@@ -150,6 +151,7 @@ class _BookDescriptionState extends State<BookDescription> {
                 Center(
                     child: Text(
                   'ዶ/ር ምህረት ደበበ',
+                  // widget.book.user.firstName + ' ' + widget.book.user.lastName,
                   style: kLargeTextStyle.copyWith(color: Colors.grey),
                 )),
                 Padding(

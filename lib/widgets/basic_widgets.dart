@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:project/constants/constants.dart';
 import 'package:project/graphql/authorized_client.dart';
+import 'package:project/models/book.dart';
 import 'package:project/screens/customer/book_description.dart';
 import 'package:project/screens/customer/search_result_screen.dart';
 import 'package:project/services/shared_preference.dart';
@@ -64,7 +65,7 @@ Widget userWidget(user, controller, context) {
   ]);
 }
 
-Widget bookWidget(context, book) {
+Widget bookWidget(BuildContext context, Book book) {
   return Container(
     margin: const EdgeInsets.all(15.0),
     child: Column(
@@ -94,10 +95,11 @@ Widget bookWidget(context, book) {
               style: kLargeTextStyle,
             ),
           ),
-          // Text(
-          //   book.title,
-          //   style: kMediumTextStyle.copyWith(color: Colors.grey),
-          // )
+          Text(
+            '',
+            // book.user.firstName + ' ' + book.user.lastName,
+            style: kMediumTextStyle.copyWith(color: Colors.grey),
+          )
         ]),
   );
 }

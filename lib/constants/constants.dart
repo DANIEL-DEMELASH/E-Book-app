@@ -5,16 +5,16 @@ import 'package:project/screens/author/author_home_screen.dart';
 import 'package:project/screens/customer/customer_home_screen.dart';
 import 'package:project/services/shared_preference.dart';
 
-const String kServerAddress = 'http://192.168.3.240';
+const String kServerAddress = 'http://192.168.221.240';
 Color kThemeColor = Colors.lightBlueAccent;
-const kLargeTextStyle = TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
-const kMediumTextStyle = TextStyle(fontSize: 16, fontWeight: FontWeight.bold);
+const kLargeTextStyle = TextStyle(fontSize: 14, fontWeight: FontWeight.bold);
+const kMediumTextStyle = TextStyle(fontSize: 10, fontWeight: FontWeight.bold);
 const kLightMediumTextStyle = TextStyle(
-    fontSize: 18, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent);
-const kExtraLargeTextStyle = TextStyle(fontSize: 34);
+    fontSize: 12, fontWeight: FontWeight.bold, color: Colors.lightBlueAccent);
+const kExtraLargeTextStyle = TextStyle(fontSize: 28);
 
 const kLightLargeTextStyle =
-    TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white);
+    TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white);
 const kTextFieldDecoration = InputDecoration(
   hintStyle: TextStyle(color: Colors.grey),
   labelStyle: kMediumTextStyle,
