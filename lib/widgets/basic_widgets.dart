@@ -38,7 +38,6 @@ Widget userWidget(user, controller, context) {
         controller: controller,
         autofocus: false,
         onEditingComplete: () async {
-          print(controller.text);
           if (controller.text.length > 0) {
             SharedPreference sharedPreference = SharedPreference();
             String? token = await sharedPreference.getToken();

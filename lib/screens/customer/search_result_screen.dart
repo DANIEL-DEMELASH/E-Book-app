@@ -52,8 +52,6 @@ class _SearchResultState extends State<SearchResult> {
               .map((e) => Book.fromJson(e))
               .toList();
 
-          print(_data);
-
           return _data.isEmpty
               ? const Center(child: Text('Empty'))
               : RefreshIndicator(

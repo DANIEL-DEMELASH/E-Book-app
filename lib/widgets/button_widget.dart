@@ -3,7 +3,7 @@ import 'package:project/constants/constants.dart';
 
 class ButtonWidget extends StatelessWidget {
   const ButtonWidget(
-      {required this.color, required this.text, required this.onPressed});
+      {Key? key, required this.color, required this.text, required this.onPressed}) : super(key: key);
 
   final String text;
   final Color color;
