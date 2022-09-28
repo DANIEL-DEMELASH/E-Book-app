@@ -1,4 +1,11 @@
 <br />
+
+<div align="left">
+  <h3 align="left">Introduction</h3>
+  <p>This application is an ecommerce application that only sells ebooks, created using the GraphQL API, Hasura GraphQL Engine, and the Flutter framework. Books are available in epub format, so most of the books are less than 1 MB. The app also have built in epub reader.Customers can search books, browse books, view descriptions, read samples of the books, and if they decide they want to buy them, they can do so by conducting a chapa payment transaction through this app.</p>
+</div>
+
+
 <div align="left">
   <h3 align="left">Android Screenshots</h3>
 </div>
