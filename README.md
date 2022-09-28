@@ -5,9 +5,9 @@
 
 <table>
   <tr>
-    <td>First Screen Page</td>
-     <td>Holiday Mention</td>
-     <td>Present day in purple and selected day in pink</td>
+    <td>Landing Screen</td>
+     <td>Signup Screen</td>
+     <td>Login Screen</td>
   </tr>
   <tr>
     <td><img src="screenshot/android/Screenshot_1.png" width=270 height=500></td>
