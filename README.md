@@ -68,7 +68,7 @@
   <tr>
     <td><img src="screenshot/iphone/Screenshot_4.png" width=270 height=500></td>
     <td><img src="screenshot/iphone/Screenshot_5.png" width=270 height=500></td>
-    <td><img src="screenshot/iphone/Screenshot_9.png" width=270 height=500></td>
+    <td><img src="screenshot/iphone/Screenshot_8.png" width=270 height=500></td>
   </tr>
  </table>
  
@@ -81,7 +81,7 @@
   <tr>
     <td><img src="screenshot/iphone/Screenshot_6.png" width=270 height=500></td>
     <td><img src="screenshot/iphone/Screenshot_7.png" width=270 height=500></td>
-    <td><img src="screenshot/iphone/Screenshot_8.png" width=270 height=500></td>
+    <td><img src="screenshot/iphone/Screenshot_9.png" width=270 height=500></td>
   </tr>
  </table>
 
