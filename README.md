@@ -11,7 +11,7 @@
 
 <!-- PROJECT SCREENSHOT -->
 ##PROJECT SCREENSHOT
-![image](screenshot/android/Screenshot_1.png)
+  <img src="screenshot/android/Screenshot_1.png" width="425"/> <img src="screenshot/android/Screenshot_2.png" width="425"/> 
 
 
 <!-- CONTACT -->
