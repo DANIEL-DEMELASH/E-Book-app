@@ -39,9 +39,7 @@ This app is an e-book app that allows customers to search books, browse books, v
 ## Screenshots
 
 
-![landing page](screenshot/android/Screenshot_1.png)
-![landing page](screenshot/android/Screenshot_1.png)
-![landing page](screenshot/android/Screenshot_1.png)
+![landing page](screenshot/android/Screenshot_1.png) ![landing page](screenshot/android/Screenshot_1.png) ![landing page](screenshot/android/Screenshot_1.png)
 
 
 <table>
